@@ -1,0 +1,33 @@
+<table class="table table-hover">
+  <thead>
+    <h3>Liked Facilities</h3>
+  </thead>
+  <tbody>
+    <% counter = 1 %>
+    <% @facilities.each do |facility| %>
+      <tr>
+      <td>
+      <h3><%= counter %> <%= link_to facility.name, facility_path(facility) %></h3>
+      <img class="search_images" src=<%= facility.img_url %>>
+      <br>
+      <% if facility.formatted_address != nil %>
+      Address: <%= facility.formatted_address %>
+      <br>
+      <% end %>
+      <% if facility.formatted_phone_number != nil && facility.formatted_phone_number != 0 %>
+      Phone: <%= facility.formatted_phone_number %>
+      <br>
+      <% end %>
+      <% if facility.rating != nil %>
+      Rating: <%= facility.rating %>
+      <br>
+      <% end %>
+      <% if facility.website != nil %>
+      Website: <a href = <%= facility.website %>><%= facility.website %></a>
+      <% end %>
+      <% counter += 1 %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

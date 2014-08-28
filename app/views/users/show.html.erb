@@ -1,0 +1,31 @@
+<h3><%= @user.name %>'s Profile</h3>
+<br>
+<%= link_to "New Booking", new_booking_path, class: 'btn bth-default' %>
+<img src="<%=@user.image %>">
+<br>
+Name: <%= @user.name %>
+<br>
+Email: <%= @user.email %>
+<br>
+Hometown: <%= @user.hometown %>
+<br>
+Current Location: <%= @user.location %>
+<br>
+<h3><%= @user.name %>'s Friends</h3>
+<% @user.friends.each do |friend| %>
+<img src="<%=friend.image %>">
+<br>
+<%= friend.name %>
+<br>
+<%= friend.email %>
+<br>
+<% end %>
+<br>
+<h3><%= @user.name %>'s Favourite Sports</h3>
+<ul>
+  <% @user.sports.each do |sport| %>
+    <li><%= sport.name %></li>
+  <% end %>
+</ul>
+<br>
+<h3><%= @user.name %>'s Bookings</h3>

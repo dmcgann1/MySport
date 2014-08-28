@@ -1,0 +1,37 @@
+<%= render 'layouts/facility_title' %>
+
+<table class="table table-hover">
+  <thead>
+    <h3>Reviews <%= link_to 'New Review', new_facility_review_path(@facility), id: 'add_review', class: 'btn btn-warning', style: "margin-left: 30px;" %></h3>
+  </thead>
+  <tbody>
+    <% @reviews.sort_by(&:score).reverse.each do |review| %>
+      <tr>
+      <td class="col-md-1">
+      <small>
+      <%= review.user.email %>
+      <br>
+      Score (<%= review.score %>)
+      </small>
+      </td>
+      <td class="col-md-7"> <%= review.body %>
+      </td>
+      <td class="col-md-1">
+      </td>
+      <td class="col-md-3">
+          <% if user_signed_in? %>
+          <% if current_user.id == review.user_id %>
+          <%= link_to 'Edit', edit_facility_review_path(review, facility_id: @facility.id), method: :get, class: 'btn btn-primary' %>
+          <%= link_to 'Delete', facility_review_path(review, facility_id: @facility.id), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
+          <% else %>
+          <%= link_to 'Useful', review_votes_path(review, is_up: true), method: :post, class: 'btn btn-success' %>
+          <%= link_to 'Not Useful', review_votes_path(review, is_up: false), method: :post, class: 'btn btn-danger' %>
+          <% end %>
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
