@@ -22,7 +22,7 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
     };
     modalService.showModal({}, modalOptions).then(function(result){
       reviewFactory.addReview(facilityId, result)
-        .success(init())
+        .success(init)
         .error(function(data){
           console.log(data);
         });
@@ -37,7 +37,7 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
     };
     modalService.showModal({}, modalOptions).then(function(result){
       reviewFactory.updateReview(facilityId, reviewId, result)
-        .success(init())
+        .success(init)
         .error(function(data){
           console.log(data);
         });
@@ -46,7 +46,7 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
 
   $scope.deleteReview = function(reviewId) {
     reviewFactory.delReview(facilityId, reviewId)
-      .success(init())
+      .success(init)
       .error(function(data){
         console.log(data);
       });
@@ -54,7 +54,7 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
 
   $scope.upVote = function(reviewId) {
     reviewFactory.upvote(reviewId)
-      .success(init())
+      .success(init)
       .error(function(data){
         console.log(data);
       });
@@ -62,7 +62,7 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
 
   $scope.downVote = function(reviewId) {
     reviewFactory.downvote(reviewId)
-      .success(init())
+      .success(init)
       .error(function(data){
         console.log(data);
       });

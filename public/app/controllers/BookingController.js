@@ -12,13 +12,13 @@ app.controller('BookingController', ['$scope', 'bookingFactory', 'sportsFactory'
       });
 
 // Get facilities for dropdown
-    myFacilitiesFactory.getFacilities()
-      .success(function(facilities) {
-        $scope.facilities = facilities;
-      })
-      .error(function(data) {
-        console.log(data);
-      });
+    // myFacilitiesFactory.getFacilities()
+    //   .success(function(facilities) {
+    //     $scope.facilities = facilities;
+    //   })
+    //   .error(function(data) {
+    //     console.log(data);
+    //   });
 
   }
   init();
