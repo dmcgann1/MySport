@@ -5,5 +5,9 @@ app.factory('facilityFactory', ['$http', function($http) {
     return $http.get('/facilities/' + facilityId);
   };
 
+  factory.likeFacility = function(facilityId) {
+    return $http.post('/facilities/' + facilityId + '/likes')
+  }
+
   return factory;
 }]);
