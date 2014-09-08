@@ -5,13 +5,14 @@ app.service('modalService', ['$modal',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: '/app/views/modal.html'
+            templateUrl: '/app/partials/modal.html'
         };
 
         var modalOptions = {
             closeButtonText: 'Close',
             actionButtonText: 'OK',
             headerText: 'Proceed?',
+            bodyText: 'Perform this action?'
         };
 
         this.showModal = function (customModalDefaults, customModalOptions) {
@@ -40,7 +41,7 @@ app.service('modalService', ['$modal',
                     $scope.modalOptions.close = function (result) {
                         $modalInstance.dismiss('cancel');
                     };
-                };
+                }
             }
 
             return $modal.open(tempModalDefaults).result;

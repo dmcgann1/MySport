@@ -71,6 +71,6 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
   $scope.like = function() {
     facilityFactory.likeFacility(facilityId)
       .success(init);
-  }
+  };
 
 }]);
