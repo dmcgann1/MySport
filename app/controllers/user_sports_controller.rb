@@ -1,8 +1,8 @@
 class UserSportsController < ApplicationController
-  respond_to :json
+  # respond_to :json
   def create
     @user_sport = current_user.user_sports.create(user_sport_params)
-    respond_with @user_sport
+    render json: @user_sport
   end
 
   private

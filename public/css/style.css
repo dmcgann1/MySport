@@ -33,6 +33,19 @@
   margin-right: 10px;
 }
 
+.select-sportstest {
+  border: 5px solid green;
+  background-color: white;
+  border-radius: 5px;
+  display: inline;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .select-sports img {
   max-height: 60px;
 }

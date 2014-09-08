@@ -3,14 +3,14 @@ app.controller('AppController',['$rootScope', '$scope', 'userFactory', function(
   $rootScope.current_user = "none";
   $rootScope.hasUser = false;
 
-  function init() {
+  $rootScope.getUser = function() {
     userFactory.getMe()
       .success(function(current_user) {
         $rootScope.current_user = current_user;
       });
-    }
+    };
 
-  init();
+  $rootScope.getUser();
 
   $rootScope.loggedIn = function(){
     // Returns none as having difficulty using null
