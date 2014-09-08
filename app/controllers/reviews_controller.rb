@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review.facility = @facility
 
     if @review.save
-      redirect_to @facility
+      render json: @review
     else
       flash.now[:alert] = @review.errors.full_messages.join(', ')
       render :new
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to @facility
+      render json: @review
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to @facility
+    render json: @facility
   end
 
   private
