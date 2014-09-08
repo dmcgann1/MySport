@@ -33,9 +33,9 @@
   margin-right: 10px;
 }
 
-.select-sportstest {
-  border: 5px solid green;
-  background-color: white;
+.liked-sport {
+  background-color: rgba(5,164,94,0.05);
+  box-shadow: 0 3px 6px rgba(5,164,94,1);
   border-radius: 5px;
   display: inline;
   margin-bottom: 20px;

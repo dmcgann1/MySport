@@ -1,4 +1,4 @@
-<div class="select-sports col-md-2" ng-repeat="sport in sports" ng-click="likeSport(sport.id)" ng-class="{'select-sportstest': sportIsLiked(sport)}">
+<div class="select-sports col-md-2" ng-repeat="sport in sports" ng-click="likeSport(sport.id)" ng-class="{'liked-sport': sportIsLiked(sport)}">
   <div class="sport-image">
     <img src="{{sport.image}}">
   </div>
