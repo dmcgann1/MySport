@@ -20,12 +20,13 @@ app.config(['$routeProvider', function($routeProvider, $http, $rootScope){
     controller: 'ActivityFeedController',
     templateUrl: 'app/views/activity_feed.html'
     // resolve: {
-    //   app: function($q, $http, $rootScope) {
-    //     var defer = $q.defer();
+    //   userLoggedIn: function($q, $http, $rootScope) {
+    //     var currentUser, defer = $q.defer();
     //     $http.get('/users')
     //       .success(function(current_user) {
-    //         $rootScope.current_user = current_user,
-    //         defer.resolve();
+    //         $rootScope.current_user = current_user;
+    //         currentUser = current_user;
+    //         defer.resolve(currentUser);
     //       });
     //     return defer.promise;
     //   }
@@ -48,12 +49,25 @@ app.config(['$routeProvider', function($routeProvider, $http, $rootScope){
 
 }]);
 
-app.run(function($location, $rootScope) {
+app.run(function($location, $rootScope, $http) {
   $rootScope.$on("$routeChangeStart", function(event, next, current) {
-    if(!$rootScope.hasUser) {
-      $location.path('/');
-    }
-  });
+    // var user, deferred = $q.defer();
+
+    // $http.get('/users')
+    //   .success(function(current_user) {
+    //     $rootScope.current_user = current_user;
+    //     deferred.resolve(user);
+    //   });
+    // return deferred.promise;
+    // if(!$rootScope.hasUser) {
+    //   $http.get('/users')
+    //   .success(function(current_user) {
+    //     $rootScope.current_user = current_user;
+    //     $rootScope.loggedIn();
+        if(!$rootScope.hasUser) {
+          $location.path('/');
+        }
+      });
 });
 
 

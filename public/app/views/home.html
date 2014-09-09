@@ -1,4 +1,5 @@
-<div class="homepage">
+<!-- Login View -->
+<div ng-hide="hasUser" class="homepage">
   <div class="row text-center">
     <div class="col-md-4">
     </div>
@@ -33,6 +34,32 @@
           <h2><i class="fa fa-futbol-o"></i><br>Play</span></h2>
           <p>Increase your time playing by reducing your time organising</p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Activity Feed if Logged In -->
+<div ng-show="hasUser" ng-controller="ActivityFeedController" class="white-background">
+  <div class="row">
+    <div class="col-md-12 activity-feed-title">
+      <h2>Activity Feed</h2>
+    </div>
+  </div>
+
+  <div class="activity-feed row" ng-repeat="booking in bookings | orderBy: 'created_at'">
+    <div class="col-md-1">
+      <a href="#/users/{{booking.users[0].id}}"><img src="{{booking.users[0].image}}"></a>
+    </div>
+    <div class="col-md-11">
+      <div class="row activity-description">
+        <div><strong><a href="#/users/{{booking.users[0].id}}">{{booking.users[0].name}}</a></strong> is playing <strong>{{booking.sport.name}}</strong> with</div> <div ng-repeat="user in booking.users" ng-if="user != booking.users[0]">
+        <a href="#/users/{{user.id}}"><div class="player-name">{{user.name}}</div></a>
+        </div>
+        <div>@ <a href="#/facilities/{{booking.facility.id}}"><strong>{{booking.facility.name}}</strong></a></div>
+      </div>
+      <div class="row">
+        <p class="activity-date">{{booking.time | date: 'medium'}}</p>
       </div>
     </div>
   </div>
