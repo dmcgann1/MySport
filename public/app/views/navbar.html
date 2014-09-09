@@ -28,39 +28,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <span class="dropdown" on-toggle="toggled(open)">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-animation="am-fade-and-slide-top">Book a game!</button>
-            <div class="dropdown-menu">
-              <form ng-controller="BookingController" class="booking" role="booking" ng-submit="newBooking(selectedSport.id, taggedFriendsIds, selectedFacility.id, sharedDate)">
-                <div class="input-group container-fluid">
-
-                  <span class="input-group-addon"><strong>Play</strong></span>
-                  <input type="text" ng-model="selectedSport" typeahead="sport as sport.name for sport in sports | filter:$viewValue | limitTo:8" class="form-control" placeholder="Choose a Sport ...">
-                </div>
-
-                <div class="input-group container-fluid">
-                  <span class="input-group-addon"><strong>with</strong></span>
-                  <tags-input class="bootstrapCustom" replace-spaces-with-dashes="false" type="text" ng-model="taggedFriends" display-property="name" add-from-autocomplete-only="true" placeholder="Add friend ...">
-                    <auto-complete min-length="1" source="loadTags($query, 7)"></auto-complete>
-                  </tags-input>
-                </div>
-
-                <div class="input-group container-fluid">
-                  <span class="input-group-addon"><strong>@</strong></span>
-                  <input type="text" ng-model="selectedFacility" typeahead="facility as facility.name for facility in facilities | filter:$viewValue | limitTo:8" class="form-control" placeholder="Choose a Facility ...">
-                </div>
-
-                <div class="input-group container-fluid">
-                  <span class="input-group-addon"><strong>at</strong></span>
-                  <div class="form-group">
-                    <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
-                    <input type="text" size="8" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Time" bs-timepicker>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-warning">Book</button>
-              </form>
-            </div>
-          </span>
+          <button type="button" class="btn btn-primary" ng-click="newBooking()">Book a game!</button>
         </li>
         <!-- <li><button type="button" class="btn btn-danger">Favourites</button></li> -->
         <li ng-show="hasUser"><a href="#/users/{{current_user.id}}"><img ng-src="{{current_user.image}}" class="navbar-profile-image"> My Profile</a></li>

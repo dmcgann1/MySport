@@ -1,3 +1,5 @@
+Delete this file
+
 <form class="booking" role="booking" ng-submit="newBooking(selectedSport.id, taggedFriendsIds, selectedFacility.id, sharedDate)">
   <div class="input-group container-fluid">
 
@@ -14,10 +16,11 @@
     <input type="text" ng-model="selectedFacility" typeahead="facility as facility.name for facility in user.facilities | filter:$viewValue | limitTo:8" class="form-control" placeholder="Choose a Facility ...">
 
     <span class="input-group-addon"><strong>at</strong></span>
-    <div class="form-group">
+
+<!--     <div class="form-group">
       <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
       <input type="text" size="8" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Time" bs-timepicker>
-    </div>
+    </div> -->
   </div>
   <button type="submit" class="btn btn-warning">Book</button>
 </form>

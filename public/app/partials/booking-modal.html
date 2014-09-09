@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h3>{{modalOptions.headerText}}</h3>
+</div>
+<div class="modal-body">
+  <form ng-controller="BookingController" class="booking" role="booking" ng-submit="newBooking(selectedSport.id, taggedFriendsIds, selectedFacility.id, sharedDate); modalOptions.close()">
+    <div class="input-group container-fluid">
+
+      <span class="input-group-addon"><strong>Play</strong></span>
+      <input type="text" ng-model="selectedSport" typeahead="sport as sport.name for sport in sports | filter:$viewValue | limitTo:8" class="form-control" placeholder="Choose a Sport ...">
+    </div>
+
+    <div class="input-group container-fluid">
+      <span class="input-group-addon"><strong>with</strong></span>
+      <tags-input class="bootstrapCustom" replace-spaces-with-dashes="false" type="text" ng-model="taggedFriends" display-property="name" add-from-autocomplete-only="true" placeholder="Add friend ...">
+        <auto-complete min-length="1" source="loadTags($query, 7)"></auto-complete>
+      </tags-input>
+    </div>
+
+    <div class="input-group container-fluid">
+      <span class="input-group-addon"><strong>@</strong></span>
+      <input type="text" ng-model="selectedFacility" typeahead="facility as facility.name for facility in facilities | filter:$viewValue | limitTo:8" class="form-control" placeholder="Choose a Facility ...">
+    </div>
+
+    <div class="input-group container-fluid">
+      <span class="input-group-addon"><strong>at</strong></span>
+      <div class="dropdown">
+          <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+              <div class="input-append"><input type="text" class="input-large" data-ng-model="data.date"><span class="add-on"><i
+                      class="icon-calendar"></i></span>
+              </div>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <datetimepicker data-ng-model="sharedDate"
+                              data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+          </ul>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-warning">Book!</button> <button type="button" class="btn" data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
+  </form>
+</div>
+
