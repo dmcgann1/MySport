@@ -4,8 +4,8 @@
 }
 
 .navbar {
-  background-color: rgba(47, 215, 210, 1);
-  border-color: rgba(47, 215, 210, 1);
+  background-color: rgba(47, 215, 210, 0.7);
+  border-color: rgba(47, 215, 210, 0.7);
   color: black;
 }
 
