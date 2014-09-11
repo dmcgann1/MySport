@@ -6,8 +6,14 @@ app.factory('facilityFactory', ['$http', function($http) {
   };
 
   factory.likeFacility = function(facilityId) {
-    return $http.post('/facilities/' + facilityId + '/likes')
-  }
+    var data = {facility_id: facilityId};
+    return $http.post('/likes/', data);
+  };
+
+  factory.unlikeFacility = function(likeId) {
+    console.log(likeId);
+    return $http.delete('/likes/' + likeId);
+  };
 
   return factory;
 }]);

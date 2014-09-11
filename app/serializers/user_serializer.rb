@@ -4,6 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :sports
   has_many :bookings
   has_many :facilities
+  has_many :likes
 
   def friends
     array = []

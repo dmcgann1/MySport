@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :user_sports, only: [:create]
   resources :users, only: [:index, :show]
   resources :bookings, only: [:index, :new, :create]
+  resources :likes, only: [:create, :destroy]
 
   resources :facilities, only: [:show] do
     resources :reviews, only: [:new, :create, :edit, :update, :destroy]
-    resources :likes, only: [:create]
   end
 
   resources :reviews, only: [] do

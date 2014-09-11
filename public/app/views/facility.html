@@ -1,6 +1,9 @@
 <div class='row fac-title'>
   <div class='col-md-12'>
-    <h3>{{facility.name}}<button ng-click="like()" class="btn btn-warning">Like</button></h3>
+    <h3>{{facility.name}}
+      <button ng-show="!isLiked" ng-click="like()" class="btn btn-warning">Like</button>
+      <button ng-show="isLiked" ng-click="unlike(likeId)" class="btn btn-warning">Unlike</button>
+    </h3>
   </div>
 </div>
 <div class='row fac-info'>
@@ -15,6 +18,7 @@
       Rating: {{facility.rating}}
       <br>
       Website: <a href="{{facility.website}}">{{facility.website}}</a>
+      {{isLiked}}
   </div>
 </div>
 

@@ -1,12 +1,25 @@
-app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams', 'modalService', 'reviewFactory', function($scope, facilityFactory, $routeParams, modalService, reviewFactory) {
+app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams', 'modalService', 'reviewFactory', '$rootScope', function($scope, facilityFactory, $routeParams, modalService, reviewFactory, $rootScope) {
 
   var facilityId = $routeParams.facilityId;
+  $scope.isLiked = false;
 
+
+  $scope.userLikes = function(facility) {
+    for(i=0; i < $rootScope.current_user.likes.length; i++) {
+      if(facility.id === $rootScope.current_user.likes[i].facility_id) {
+        $scope.isLiked = true;
+        $scope.likeId = $rootScope.current_user.likes[i].id;
+        break;
+      }
+    }
+  };
 
   function init() {
+    $rootScope.getUser();
+
     facilityFactory.getFacility(facilityId)
       .success(function(facility) {
-        $scope.facility = facility;
+        $scope.facility = facility, $scope.userLikes(facility);
       })
       .error(function(data){
         console.log(data);
@@ -71,6 +84,13 @@ app.controller('FacilityController', ['$scope', 'facilityFactory', '$routeParams
   $scope.like = function() {
     facilityFactory.likeFacility(facilityId)
       .success(init);
+  };
+
+  $scope.unlike = function(likeId) {
+    facilityFactory.unlikeFacility(likeId)
+      .success(function() {
+        $scope.isLiked = false;
+    });
   };
 
 }]);
