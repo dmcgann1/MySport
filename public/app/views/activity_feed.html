@@ -7,11 +7,11 @@
 
   <div class="activity-feed row" ng-repeat="booking in bookings | orderBy: 'created_at'">
     <div class="col-md-1">
-      <a href="#/users/{{booking.users[0].id}}"><img src="{{booking.users[0].image}}"></a>
+      <a href="#/users/{{booking.users[booking.users.length - 1].id}}"><img src="{{booking.users[booking.users.length - 1].image}}"></a>
     </div>
     <div class="col-md-11">
       <div class="row activity-description">
-        <div><strong><a href="#/users/{{booking.users[0].id}}">{{booking.users[0].name}}</a></strong> is playing <strong>{{booking.sport.name}}</strong> with</div> <div ng-repeat="user in booking.users" ng-if="user != booking.users[0]">
+        <div><strong><a href="#/users/{{booking.users[booking.users.length - 1].id}}">{{booking.users[booking.users.length - 1].name}}</a></strong> is playing <strong>{{booking.sport.name}}</strong> with</div> <div ng-repeat="user in booking.users" ng-if="user != booking.users[booking.users.length - 1]">
         <a href="#/users/{{user.id}}"><div class="player-name">{{user.name}}</div></a>
         </div>
         <div>@ <a href="#/facilities/{{booking.facility.id}}"><strong>{{booking.facility.name}}</strong></a></div>
