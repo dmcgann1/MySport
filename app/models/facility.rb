@@ -20,7 +20,7 @@ class Facility < ActiveRecord::Base
     if photo
       f.update(img_url: photo.fetch_url(800))
     else
-      f.update(img_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR6DvWxavCtGlz3CHRmACBDlv_hCDKlEHC5RiCsAqxp6T1RBEzf1w")
+      f.update(img_url: "http://www.aydindenge.com.tr/static/themes/default/no_photo.png?v=88621")
     end
 
     f

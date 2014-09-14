@@ -1,20 +1,81 @@
-<div class="white-background">
-  <div class="row profile-header">
-    <div class="col-md-1">
-      <img src="{{user.image}}?type=normal">
+<div class="row">
+  <div class="col-md-8">
+    <div class="row profile-header white-background">
+      <div class="col-md-2 profile-image">
+        <img src="{{user.image}}?type=square&height=100&width=100">
+      </div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>{{user.name}}</h2>
+          </div>
+          <div class="col-md-6">
+            <!-- <button class="btn btn-primary">Challenge!</button> -->
+          </div>
+        </div>
+        <p><strong>Hometown:</strong> {{user.hometown}}</p>
+        <p><strong>Location:</strong> {{user.location}}</p>
+        <p><strong>Email:</strong> {{user.email}}</p>
+      </div>
     </div>
-    <div class="col-md-4">
-      <h2>{{user.name}}</h2>
-      <p>Email: {{user.email}}</p>
-      <p>Hometown: {{user.hometown}}</p>
-      <p>Location: {{user.location}}</p>
+    <div class="row profile-activity-feed-title white-background">
+      Activity
     </div>
-    <div class="col-md-3">
-      <h3 class="text-center">Friends</h3>
+    <div class="activity-feed row white-background" ng-repeat="booking in user.bookings | orderBy: 'created_at'">
+      <div class="col-md-1 fav-sports">
+        <img src="{{booking.sport.image}}">
+      </div>
+      <div class="col-md-11">
+        <div class="row activity-description">
+          <div><strong>{{user.name}}</strong> is playing <strong>{{booking.sport.name}}</strong> with</div> <div ng-repeat="user in booking.users" ng-if="user.id != userId">
+          <a href="#/users/{{user.id}}"><div class="player-name">{{user.name}}</div></a>
+          </div>
+          <div>@ <a href="#/facilities/{{booking.facility.id}}"><strong>{{booking.facility.name}}</strong></a></div>
+        </div>
+        <div class="row">
+          <p class="activity-date">{{booking.time | date: 'medium'}}</p>
+        </div>
+      </div>
+    </div>
+<!--     <div class="row profile-activity-feed-title white-background">
+      Recent activity
+    </div>
+    <div class="activity-feed row white-background" ng-repeat="booking in user.bookings | orderBy: 'created_at'">
+      <div class="col-md-1 fav-sports">
+        <img src="{{booking.sport.image}}">
+      </div>
+      <div class="col-md-11">
+        <div class="row activity-description">
+          <div><strong>{{user.name}}</strong> played <strong>{{booking.sport.name}}</strong> with</div> <div ng-repeat="user in booking.users" ng-if="user.id != userId">
+          <a href="#/users/{{user.id}}"><div class="player-name">{{user.name}}</div></a>
+          </div>
+          <div>@ <a href="#/facilities/{{booking.facility.id}}"><strong>{{booking.facility.name}}</strong></a></div>
+        </div>
+        <div class="row">
+          <p class="activity-date">{{booking.time | date: 'medium'}}</p>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-3">
+    <div class="row my-sports white-background">
+      <div class="profile-section-title">
+        Sports
+      </div>
+      <div class="my-sports-profile-view col-md-4" ng-repeat="sport in user.sports">
+        <img src="{{sport.image}}">
+      </div>
+    </div>
+    <div class="row my-friends white-background">
+      <div class="profile-section-title">
+        Friends
+      </div>
       <a ng-repeat="friend in user.friends" href="#/users/{{friend.id}}">
-        <div class="profile-friend col-md-3">
+        <div class="profile-friend col-md-4">
           <div class="profile-friend-image">
-            <img src="{{friend.image}}">
+            <img src="{{friend.image}}?type=square&height=100&width=100">
           </div>
           <div class="profile-friend-name">
             <h6>{{friend.name}}</h6>
@@ -22,10 +83,12 @@
         </div>
       </a>
     </div>
-    <div class="col-md-4">
-      <h3 class="text-center">Favourite Facilities</h3>
+    <div class="row my-facilities white-background">
+      <div class="profile-section-title">
+        Facilities
+      </div>
       <a ng-repeat="facility in user.facilities" href="#/facilities/{{facility.id}}">
-        <div class="profile-facility col-md-3">
+        <div class="profile-facility col-md-4">
           <div class="profile-facility-image">
             <img src="{{facility.img_url}}">
           </div>
@@ -35,39 +98,16 @@
         </div>
       </a>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h4>Favourite Sports</h4>
-    </div>
-  </div>
-  <div class="row" style="margin-left: 5px;">
-    <div class="fav-sports" ng-repeat="sport in user.sports">
-      <img src="{{sport.image}}">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Activity Feed</h3>
-    </div>
-  </div>
-  <div class="activity-feed row" ng-repeat="booking in user.bookings | orderBy: 'created_at'">
-    <div class="col-md-1 fav-sports">
-      <img src="{{booking.sport.image}}">
-    </div>
-    <div class="col-md-11">
-      <div class="row activity-description">
-        <div><strong>{{user.name}}</strong> is playing <strong>{{booking.sport.name}}</strong> with</div> <div ng-repeat="user in booking.users" ng-if="user.id != userId">
-        <a href="#/users/{{user.id}}"><div class="player-name">{{user.name}}</div></a>
-        </div>
-        <div>@ <a href="#/facilities/{{booking.facility.id}}"><strong>{{booking.facility.name}}</strong></a></div>
+<!--     <div class="row my-groups white-background">
+      <div class="profile-section-title">
+        Groups
       </div>
-      <div class="row">
-        <p class="activity-date">{{booking.time | date: 'medium'}}</p>
-      </div>
-    </div>
+    </div> -->
   </div>
 </div>
+
+
+
 
 
 
